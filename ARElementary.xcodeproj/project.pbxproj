@@ -13,6 +13,10 @@
 		181EDA9126AF019B00184BB1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 181EDA9026AF019B00184BB1 /* Preview Assets.xcassets */; };
 		181EDA9B26AF019B00184BB1 /* ARElementaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDA9A26AF019B00184BB1 /* ARElementaryTests.swift */; };
 		181EDAA526AF019B00184BB1 /* ARElementaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDAA426AF019B00184BB1 /* ARElementaryUITests.swift */; };
+		181EDAB226AF01E000184BB1 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 181EDAB126AF01E000184BB1 /* Experience.rcproject */; };
+		181EDAB426AF020800184BB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDAB326AF020800184BB1 /* AppDelegate.swift */; };
+		181EDAB626AF024300184BB1 /* ARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDAB526AF024300184BB1 /* ARViewModel.swift */; };
+		181EDAB826AF027A00184BB1 /* ARDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDAB726AF027A00184BB1 /* ARDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,11 @@
 		181EDA9A26AF019B00184BB1 /* ARElementaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARElementaryTests.swift; sourceTree = "<group>"; };
 		181EDAA026AF019B00184BB1 /* ARElementaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARElementaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		181EDAA426AF019B00184BB1 /* ARElementaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARElementaryUITests.swift; sourceTree = "<group>"; };
+		181EDAB126AF01E000184BB1 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
+		181EDAB326AF020800184BB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		181EDAB526AF024300184BB1 /* ARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewModel.swift; sourceTree = "<group>"; };
+		181EDAB726AF027A00184BB1 /* ARDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARDataModel.swift; sourceTree = "<group>"; };
+		181EDAB926AF02BF00184BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +101,13 @@
 		181EDA8826AF019900184BB1 /* ARElementary */ = {
 			isa = PBXGroup;
 			children = (
+				181EDAB926AF02BF00184BB1 /* Info.plist */,
+				181EDAB326AF020800184BB1 /* AppDelegate.swift */,
 				181EDA8926AF019900184BB1 /* ARElementaryApp.swift */,
 				181EDA8B26AF019900184BB1 /* ContentView.swift */,
+				181EDAB526AF024300184BB1 /* ARViewModel.swift */,
+				181EDAB726AF027A00184BB1 /* ARDataModel.swift */,
+				181EDAB126AF01E000184BB1 /* Experience.rcproject */,
 				181EDA8D26AF019B00184BB1 /* Assets.xcassets */,
 				181EDA8F26AF019B00184BB1 /* Preview Content */,
 			);
@@ -254,8 +268,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				181EDAB626AF024300184BB1 /* ARViewModel.swift in Sources */,
+				181EDAB426AF020800184BB1 /* AppDelegate.swift in Sources */,
 				181EDA8C26AF019900184BB1 /* ContentView.swift in Sources */,
 				181EDA8A26AF019900184BB1 /* ARElementaryApp.swift in Sources */,
+				181EDAB826AF027A00184BB1 /* ARDataModel.swift in Sources */,
+				181EDAB226AF01E000184BB1 /* Experience.rcproject in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,12 +436,19 @@
 				DEVELOPMENT_TEAM = 4Q332864D3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = ARElementary/Info.plist;
+				INFOPLIST_KEY_CFBundleExecutable = ARElementary;
+				INFOPLIST_KEY_CFBundleName = ARElementary;
+				INFOPLIST_KEY_CFBundleVersion = 1;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to the camera to support Augmented Reality.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -448,12 +473,19 @@
 				DEVELOPMENT_TEAM = 4Q332864D3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = ARElementary/Info.plist;
+				INFOPLIST_KEY_CFBundleExecutable = ARElementary;
+				INFOPLIST_KEY_CFBundleName = ARElementary;
+				INFOPLIST_KEY_CFBundleVersion = 1;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to the camera to support Augmented Reality.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
