@@ -13,8 +13,21 @@ struct ContentView: View {
 			VStack {
 				Text("Elementary AR")
 					.font(.headline)
+				Button {
+					print("Clicked")
+				} label: {
+					Image("LettersButton")
+				}
+
+				Button {
+					print("Clicked")
+				} label: {
+					Image("ShapesButton")
+				}
+
 				NavigationLink("AR View!", destination: ARViewModel())
 			}
+			.navigationBarTitle(Text("AR Elementary"))
 		}
     }
 }
