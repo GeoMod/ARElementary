@@ -15,7 +15,7 @@
 		181EDAA526AF019B00184BB1 /* ARElementaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDAA426AF019B00184BB1 /* ARElementaryUITests.swift */; };
 		181EDAB226AF01E000184BB1 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 181EDAB126AF01E000184BB1 /* Experience.rcproject */; };
 		181EDAB426AF020800184BB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDAB326AF020800184BB1 /* AppDelegate.swift */; };
-		181EDAB626AF024300184BB1 /* ARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDAB526AF024300184BB1 /* ARViewModel.swift */; };
+		181EDAB626AF024300184BB1 /* ARScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDAB526AF024300184BB1 /* ARScene.swift */; };
 		181EDAB826AF027A00184BB1 /* ARDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDAB726AF027A00184BB1 /* ARDataModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,7 +48,7 @@
 		181EDAA426AF019B00184BB1 /* ARElementaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARElementaryUITests.swift; sourceTree = "<group>"; };
 		181EDAB126AF01E000184BB1 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
 		181EDAB326AF020800184BB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		181EDAB526AF024300184BB1 /* ARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewModel.swift; sourceTree = "<group>"; };
+		181EDAB526AF024300184BB1 /* ARScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARScene.swift; sourceTree = "<group>"; };
 		181EDAB726AF027A00184BB1 /* ARDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARDataModel.swift; sourceTree = "<group>"; };
 		181EDAB926AF02BF00184BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,7 +105,7 @@
 				181EDAB326AF020800184BB1 /* AppDelegate.swift */,
 				181EDA8926AF019900184BB1 /* ARElementaryApp.swift */,
 				181EDA8B26AF019900184BB1 /* ContentView.swift */,
-				181EDAB526AF024300184BB1 /* ARViewModel.swift */,
+				181EDAB526AF024300184BB1 /* ARScene.swift */,
 				181EDAB726AF027A00184BB1 /* ARDataModel.swift */,
 				181EDAB126AF01E000184BB1 /* Experience.rcproject */,
 				181EDA8D26AF019B00184BB1 /* Assets.xcassets */,
@@ -268,7 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				181EDAB626AF024300184BB1 /* ARViewModel.swift in Sources */,
+				181EDAB626AF024300184BB1 /* ARScene.swift in Sources */,
 				181EDAB426AF020800184BB1 /* AppDelegate.swift in Sources */,
 				181EDA8C26AF019900184BB1 /* ContentView.swift in Sources */,
 				181EDA8A26AF019900184BB1 /* ARElementaryApp.swift in Sources */,

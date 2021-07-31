@@ -27,21 +27,21 @@ final class ARDataModel: ObservableObject {
 		guard let A = scene.uppercaseA else { return }
 		if let uppercaseA = A as? Entity & HasCollision {
 			uppercaseA.generateCollisionShapes(recursive: true)
-			arView.installGestures([.rotation, .translation], for: uppercaseA)
+//			arView.installGestures([.rotation, .translation], for: uppercaseA)
 		}
 
 
 		guard let B = scene.uppercaseB else { return }
 		if let uppercaseB = B as? Entity & HasCollision {
 			uppercaseB.generateCollisionShapes(recursive: true)
-			arView.installGestures([.rotation, .translation], for: uppercaseB)
+//			arView.installGestures([.rotation, .translation], for: uppercaseB)
 		}
 
 
 		guard let C = scene.uppercaseC else { return }
 		if let uppercaseC = C as? Entity & HasCollision {
 			uppercaseC.generateCollisionShapes(recursive: true)
-			arView.installGestures([.rotation, .translation], for: uppercaseC)
+//			arView.installGestures([.rotation, .translation], for: uppercaseC)
 		}
 
 
@@ -49,7 +49,7 @@ final class ARDataModel: ObservableObject {
 
 		if let uppercaseD = D as? Entity & HasCollision {
 			uppercaseD.generateCollisionShapes(recursive: true)
-			arView.installGestures([.rotation, .translation], for: uppercaseD)
+//			arView.installGestures([.rotation, .translation], for: uppercaseD)
 		}
 
 		arView.scene.anchors.append(scene)

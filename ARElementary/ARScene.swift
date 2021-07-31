@@ -8,7 +8,7 @@
 import RealityKit
 import SwiftUI
 
-struct ARViewModel: View {
+struct ARScene: View {
 	var body: some View {
 		return ARViewContainer()
 			.edgesIgnoringSafeArea(.all)
