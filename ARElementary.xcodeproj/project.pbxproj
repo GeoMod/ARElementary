@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180498DF26B80E87003ED131 /* ARCoachingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180498DE26B80E87003ED131 /* ARCoachingView.swift */; };
 		181EDA8A26AF019900184BB1 /* ARElementaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDA8926AF019900184BB1 /* ARElementaryApp.swift */; };
 		181EDA8C26AF019900184BB1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDA8B26AF019900184BB1 /* ContentView.swift */; };
 		181EDA8E26AF019B00184BB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 181EDA8D26AF019B00184BB1 /* Assets.xcassets */; };
@@ -17,6 +18,9 @@
 		181EDAB426AF020800184BB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDAB326AF020800184BB1 /* AppDelegate.swift */; };
 		181EDAB626AF024300184BB1 /* ARScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDAB526AF024300184BB1 /* ARScene.swift */; };
 		181EDAB826AF027A00184BB1 /* ARDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDAB726AF027A00184BB1 /* ARDataModel.swift */; };
+		182B57D026B83669001E6DB7 /* FocusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B57CF26B83669001E6DB7 /* FocusSquare.swift */; };
+		182B57D226B83671001E6DB7 /* FocusSquareSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B57D126B83671001E6DB7 /* FocusSquareSegment.swift */; };
+		182B57D426B8376A001E6DB7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B57D326B8376A001E6DB7 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		180498DE26B80E87003ED131 /* ARCoachingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCoachingView.swift; sourceTree = "<group>"; };
 		181EDA8626AF019900184BB1 /* ARElementary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARElementary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		181EDA8926AF019900184BB1 /* ARElementaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARElementaryApp.swift; sourceTree = "<group>"; };
 		181EDA8B26AF019900184BB1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +56,10 @@
 		181EDAB526AF024300184BB1 /* ARScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARScene.swift; sourceTree = "<group>"; };
 		181EDAB726AF027A00184BB1 /* ARDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARDataModel.swift; sourceTree = "<group>"; };
 		181EDAB926AF02BF00184BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		182B57CD26B83602001E6DB7 /* FocusSquareReadme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = FocusSquareReadme.md; sourceTree = "<group>"; };
+		182B57CF26B83669001E6DB7 /* FocusSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquare.swift; sourceTree = "<group>"; };
+		182B57D126B83671001E6DB7 /* FocusSquareSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquareSegment.swift; sourceTree = "<group>"; };
+		182B57D326B8376A001E6DB7 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +115,7 @@
 				181EDA8926AF019900184BB1 /* ARElementaryApp.swift */,
 				181EDA8B26AF019900184BB1 /* ContentView.swift */,
 				181EDAB526AF024300184BB1 /* ARScene.swift */,
+				182B57CE26B83625001E6DB7 /* AR CoachingView */,
 				181EDAB726AF027A00184BB1 /* ARDataModel.swift */,
 				181EDAB126AF01E000184BB1 /* Experience.rcproject */,
 				181EDA8D26AF019B00184BB1 /* Assets.xcassets */,
@@ -136,6 +146,18 @@
 				181EDAA426AF019B00184BB1 /* ARElementaryUITests.swift */,
 			);
 			path = ARElementaryUITests;
+			sourceTree = "<group>";
+		};
+		182B57CE26B83625001E6DB7 /* AR CoachingView */ = {
+			isa = PBXGroup;
+			children = (
+				182B57CD26B83602001E6DB7 /* FocusSquareReadme.md */,
+				180498DE26B80E87003ED131 /* ARCoachingView.swift */,
+				182B57CF26B83669001E6DB7 /* FocusSquare.swift */,
+				182B57D126B83671001E6DB7 /* FocusSquareSegment.swift */,
+				182B57D326B8376A001E6DB7 /* Utilities.swift */,
+			);
+			path = "AR CoachingView";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,7 +294,11 @@
 				181EDAB426AF020800184BB1 /* AppDelegate.swift in Sources */,
 				181EDA8C26AF019900184BB1 /* ContentView.swift in Sources */,
 				181EDA8A26AF019900184BB1 /* ARElementaryApp.swift in Sources */,
+				182B57D226B83671001E6DB7 /* FocusSquareSegment.swift in Sources */,
 				181EDAB826AF027A00184BB1 /* ARDataModel.swift in Sources */,
+				182B57D026B83669001E6DB7 /* FocusSquare.swift in Sources */,
+				180498DF26B80E87003ED131 /* ARCoachingView.swift in Sources */,
+				182B57D426B8376A001E6DB7 /* Utilities.swift in Sources */,
 				181EDAB226AF01E000184BB1 /* Experience.rcproject in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

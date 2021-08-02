@@ -8,27 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
-	let backgroundGradient = Gradient(colors: [Color(.systemOrange), Color(.systemPurple), Color(.systemOrange), Color(.systemTeal)])
-    var body: some View {
+	var body: some View {
 		NavigationView {
 			ZStack {
-//				RadialGradient(gradient: backgroundGradient, center: .center, startRadius: 1, endRadius: 1000)
-				Image("background")
-					.resizable()
-					.renderingMode(.original)
-					.edgesIgnoringSafeArea(.all)
-				VStack(alignment: .leading) {
-					Text("AR Elementary")
-						.font(.largeTitle.bold())
-						.foregroundColor(.white)
-						.shadow(radius: 20)
+				BackgroundImage
+				VStack {
+					TitleText
 					HStack {
 						NavigationLink(destination: ARScene()) {
 							Image("LettersButton")
 								.shadow(color: .black, radius: 2, x: 2)
 								.accessibility(label: Text("Letters Game"))
 								.accessibility(hint: Text("Tap to open letters matching game."))
-
 						}
 						Spacer().frame(width: 50)
 						NavigationLink(destination: Text("Shapes Game")) {
@@ -38,15 +29,28 @@ struct ContentView: View {
 								.accessibility(hint: Text("Tap to open shapes matching game."))
 						}
 					}
-					Text("Choose a game")
-						.font(.largeTitle)
-						.foregroundColor(.white)
+
 					Spacer()
 				}
-
 			}
 		}
-    }
+	}
+
+
+	private var BackgroundImage: some View {
+		Image("background")
+			.resizable()
+			.renderingMode(.original)
+			.edgesIgnoringSafeArea(.all)
+	}
+
+	private var TitleText: some View {
+		Text("Move and Match AR")
+			.font(.largeTitle.bold())
+			.foregroundColor(.orange)
+			.padding(.bottom, 75)
+	}
+
 }
 
 struct ContentView_Previews: PreviewProvider {

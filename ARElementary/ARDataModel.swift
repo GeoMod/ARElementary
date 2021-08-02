@@ -21,8 +21,7 @@ final class ARDataModel: ObservableObject {
 	init() {
 		arView = ARView()
 		let scene = try! Experience.loadLetters()
-
-
+		
 		// Allow for gesture control in the scene.
 		guard let A = scene.uppercaseA else { return }
 		if let uppercaseA = A as? Entity & HasCollision {
