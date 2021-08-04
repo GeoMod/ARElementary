@@ -4,8 +4,7 @@
 //
 //  Created by Daniel O'Leary on 7/26/21.
 //
-
-import SwiftUI
+import Combine
 import RealityKit
 
 final class ARDataModel: ObservableObject {
@@ -21,7 +20,7 @@ final class ARDataModel: ObservableObject {
 	init() {
 		arView = ARView()
 		let scene = try! Experience.loadLetters()
-		
+
 		// Allow for gesture control in the scene.
 		guard let A = scene.uppercaseA else { return }
 		if let uppercaseA = A as? Entity & HasCollision {
@@ -53,7 +52,6 @@ final class ARDataModel: ObservableObject {
 
 		arView.scene.anchors.append(scene)
 	}
-
 	
 	// MARK: Old Reference Code
 	/*
@@ -200,5 +198,6 @@ final class ARDataModel: ObservableObject {
 //		}
 //	}
 
-
 }
+
+

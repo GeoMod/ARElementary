@@ -1,18 +1,12 @@
-/*
-
-SceneKit node giving the user hints about the status of ARKit world tracking.
-*/
+//SceneKit node giving the user hints about the status of ARKit world tracking.
 
 import Foundation
 import ARKit
 
-/**
+/*
  An `SCNNode` which is used to provide uses with visual cues about the status of ARKit world tracking.
- - Tag: FocusSquare
  */
 class FocusSquare: SCNNode {
-    // MARK: - Types
-    
     enum State: Equatable {
         case initializing
         case detecting(raycastResult: ARRaycastResult, camera: ARCamera?)
@@ -202,7 +196,6 @@ class FocusSquare: SCNNode {
 
     // MARK: Helper Methods
     
-    // - Tag: Set3DOrientation
     func updateOrientation(basedOn raycastResult: ARRaycastResult) {
         self.simdOrientation = raycastResult.worldTransform.orientation
     }
