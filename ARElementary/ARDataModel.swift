@@ -63,10 +63,11 @@ final class ARDataModel: ObservableObject {
 		coachingOverlay.translatesAutoresizingMaskIntoConstraints = false
 		arView.addSubview(coachingOverlay)
 		// Set Auto Layout constraints
-		coachingOverlay.topAnchor.constraint(equalTo: arView.topAnchor).isActive = true
-		coachingOverlay.leadingAnchor.constraint(equalTo: arView.leadingAnchor).isActive = true
-		coachingOverlay.trailingAnchor.constraint(equalTo: arView.trailingAnchor).isActive = true
-		coachingOverlay.bottomAnchor.constraint(equalTo: arView.bottomAnchor).isActive = true
+		coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//		coachingOverlay.topAnchor.constraint(equalTo: arView.topAnchor).isActive = true
+//		coachingOverlay.leadingAnchor.constraint(equalTo: arView.leadingAnchor).isActive = true
+//		coachingOverlay.trailingAnchor.constraint(equalTo: arView.trailingAnchor).isActive = true
+//		coachingOverlay.bottomAnchor.constraint(equalTo: arView.bottomAnchor).isActive = true
 		// Specify a goal for the coaching overlay, in this case, the goal is to establish world tracking
 		coachingOverlay.goal = .horizontalPlane
 		// Tell the coaching overlay which ARSession it should be monitoring
