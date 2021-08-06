@@ -9,7 +9,7 @@ import ARKit
 import Combine
 import RealityKit
 
-final class ARDataModel: ObservableObject {
+class ARDataModel: NSObject, ObservableObject {
 	static var shared = ARDataModel()
 
 	@Published var arView: ARView
@@ -19,11 +19,13 @@ final class ARDataModel: ObservableObject {
 	//		didSet { resetScene() }
 	//	}
 
-	init() {
+	override init() {
 		arView = ARView()
+
+		super.init()
 		setupCoachingOverlay()
 
-//		let scene = try! Experience.loadLetters()
+		let scene = try! Experience.loadLetters()
 //
 //		// Allow for gesture control in the scene.
 //		guard let A = scene.uppercaseA else { return }
@@ -54,30 +56,23 @@ final class ARDataModel: ObservableObject {
 ////			arView.installGestures([.rotation, .translation], for: uppercaseD)
 //		}
 //
-//		arView.scene.anchors.append(scene)
+		arView.scene.anchors.append(scene)
 	}
 
 	func setupCoachingOverlay() {
-		// Called in viewDidLoad
 		let coachingOverlay = ARCoachingOverlayView(frame: arView.frame)
-		coachingOverlay.translatesAutoresizingMaskIntoConstraints = false
 		arView.addSubview(coachingOverlay)
-		// Set Auto Layout constraints
+
+		// Set overlay constraints to the full frame.
 		coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//		coachingOverlay.topAnchor.constraint(equalTo: arView.topAnchor).isActive = true
-//		coachingOverlay.leadingAnchor.constraint(equalTo: arView.leadingAnchor).isActive = true
-//		coachingOverlay.trailingAnchor.constraint(equalTo: arView.trailingAnchor).isActive = true
-//		coachingOverlay.bottomAnchor.constraint(equalTo: arView.bottomAnchor).isActive = true
-		// Specify a goal for the coaching overlay, in this case, the goal is to establish world tracking
+		// Look for horizontal plane as anchor.
 		coachingOverlay.goal = .horizontalPlane
-		// Tell the coaching overlay which ARSession it should be monitoring
+
 		coachingOverlay.session = arView.session
 	}
 	
 	// MARK: Old Reference Code
 	/*
-
-
 	final class DataModel: ObservableObject {
 		static var shared = DataModel()
 
@@ -95,10 +90,7 @@ final class ARDataModel: ObservableObject {
 		//	@Published var scaleValue: Float = 50.0 {
 		//		didSet { scaleTesla() }
 		//	}
-
-
 	}
-
 	 */
 
 	/*
@@ -219,4 +211,17 @@ final class ARDataModel: ObservableObject {
 //		}
 //	}
 
+}
+
+
+extension ARDataModel: ARCoachingOverlayViewDelegate {
+	func coachingOverlayViewWillActivate(_ coachingOverlayView: ARCoachingOverlayView) {
+		// Doesn't appear to fire
+		// 8/5/21
+		arView.isHidden = true
+	}
+
+	func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
+		arView.isHidden = false
+	}
 }

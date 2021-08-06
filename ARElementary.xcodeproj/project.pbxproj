@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		180498DF26B80E87003ED131 /* ARCoachingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180498DE26B80E87003ED131 /* ARCoachingView.swift */; };
 		181EDA8A26AF019900184BB1 /* ARElementaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDA8926AF019900184BB1 /* ARElementaryApp.swift */; };
 		181EDA8C26AF019900184BB1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDA8B26AF019900184BB1 /* ContentView.swift */; };
 		181EDA8E26AF019B00184BB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 181EDA8D26AF019B00184BB1 /* Assets.xcassets */; };
@@ -41,7 +40,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		180498DE26B80E87003ED131 /* ARCoachingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCoachingView.swift; sourceTree = "<group>"; };
 		181EDA8626AF019900184BB1 /* ARElementary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARElementary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		181EDA8926AF019900184BB1 /* ARElementaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARElementaryApp.swift; sourceTree = "<group>"; };
 		181EDA8B26AF019900184BB1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				182B57CD26B83602001E6DB7 /* FocusSquare Readme.md */,
-				180498DE26B80E87003ED131 /* ARCoachingView.swift */,
 				182B57CF26B83669001E6DB7 /* FocusSquare.swift */,
 				182B57D126B83671001E6DB7 /* FocusSquare+FocusSquareSegment.swift */,
 				182B57D326B8376A001E6DB7 /* Utilities.swift */,
@@ -297,7 +294,6 @@
 				182B57D226B83671001E6DB7 /* FocusSquare+FocusSquareSegment.swift in Sources */,
 				181EDAB826AF027A00184BB1 /* ARDataModel.swift in Sources */,
 				182B57D026B83669001E6DB7 /* FocusSquare.swift in Sources */,
-				180498DF26B80E87003ED131 /* ARCoachingView.swift in Sources */,
 				182B57D426B8376A001E6DB7 /* Utilities.swift in Sources */,
 				181EDAB226AF01E000184BB1 /* Experience.rcproject in Sources */,
 			);
