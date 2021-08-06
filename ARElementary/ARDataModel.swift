@@ -4,6 +4,8 @@
 //
 //  Created by Daniel O'Leary on 7/26/21.
 //
+
+import ARKit
 import Combine
 import RealityKit
 
@@ -19,38 +21,56 @@ final class ARDataModel: ObservableObject {
 
 	init() {
 		arView = ARView()
-		let scene = try! Experience.loadLetters()
+		setupCoachingOverlay()
 
-		// Allow for gesture control in the scene.
-		guard let A = scene.uppercaseA else { return }
-		if let uppercaseA = A as? Entity & HasCollision {
-			uppercaseA.generateCollisionShapes(recursive: true)
-//			arView.installGestures([.rotation, .translation], for: uppercaseA)
-		}
+//		let scene = try! Experience.loadLetters()
+//
+//		// Allow for gesture control in the scene.
+//		guard let A = scene.uppercaseA else { return }
+//		if let uppercaseA = A as? Entity & HasCollision {
+//			uppercaseA.generateCollisionShapes(recursive: true)
+////			arView.installGestures([.rotation, .translation], for: uppercaseA)
+//		}
+//
+//
+//		guard let B = scene.uppercaseB else { return }
+//		if let uppercaseB = B as? Entity & HasCollision {
+//			uppercaseB.generateCollisionShapes(recursive: true)
+////			arView.installGestures([.rotation, .translation], for: uppercaseB)
+//		}
+//
+//
+//		guard let C = scene.uppercaseC else { return }
+//		if let uppercaseC = C as? Entity & HasCollision {
+//			uppercaseC.generateCollisionShapes(recursive: true)
+////			arView.installGestures([.rotation, .translation], for: uppercaseC)
+//		}
+//
+//
+//		guard let D = scene.uppercaseD else { return }
+//
+//		if let uppercaseD = D as? Entity & HasCollision {
+//			uppercaseD.generateCollisionShapes(recursive: true)
+////			arView.installGestures([.rotation, .translation], for: uppercaseD)
+//		}
+//
+//		arView.scene.anchors.append(scene)
+	}
 
-
-		guard let B = scene.uppercaseB else { return }
-		if let uppercaseB = B as? Entity & HasCollision {
-			uppercaseB.generateCollisionShapes(recursive: true)
-//			arView.installGestures([.rotation, .translation], for: uppercaseB)
-		}
-
-
-		guard let C = scene.uppercaseC else { return }
-		if let uppercaseC = C as? Entity & HasCollision {
-			uppercaseC.generateCollisionShapes(recursive: true)
-//			arView.installGestures([.rotation, .translation], for: uppercaseC)
-		}
-
-
-		guard let D = scene.uppercaseD else { return }
-
-		if let uppercaseD = D as? Entity & HasCollision {
-			uppercaseD.generateCollisionShapes(recursive: true)
-//			arView.installGestures([.rotation, .translation], for: uppercaseD)
-		}
-
-		arView.scene.anchors.append(scene)
+	func setupCoachingOverlay() {
+		// Called in viewDidLoad
+		let coachingOverlay = ARCoachingOverlayView(frame: arView.frame)
+		coachingOverlay.translatesAutoresizingMaskIntoConstraints = false
+		arView.addSubview(coachingOverlay)
+		// Set Auto Layout constraints
+		coachingOverlay.topAnchor.constraint(equalTo: arView.topAnchor).isActive = true
+		coachingOverlay.leadingAnchor.constraint(equalTo: arView.leadingAnchor).isActive = true
+		coachingOverlay.trailingAnchor.constraint(equalTo: arView.trailingAnchor).isActive = true
+		coachingOverlay.bottomAnchor.constraint(equalTo: arView.bottomAnchor).isActive = true
+		// Specify a goal for the coaching overlay, in this case, the goal is to establish world tracking
+		coachingOverlay.goal = .horizontalPlane
+		// Tell the coaching overlay which ARSession it should be monitoring
+		coachingOverlay.session = arView.session
 	}
 	
 	// MARK: Old Reference Code
@@ -199,5 +219,3 @@ final class ARDataModel: ObservableObject {
 //	}
 
 }
-
-

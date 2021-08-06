@@ -46,7 +46,7 @@ struct ContentView: View {
 	}
 
 	private var TitleText: some View {
-		Text("Move and Match AR")
+		Text("AR Move and Match")
 			.font(.largeTitle.bold())
 			.foregroundColor(.orange)
 			.padding(.bottom, 75)
