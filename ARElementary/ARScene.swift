@@ -20,6 +20,7 @@ struct ARScene: View {
 	}
 }
 
+// MARK: UIViewRepresentable
 struct ARViewContainer: UIViewRepresentable {
 	func makeUIView(context: Context) -> ARView {
 		return ARDataModel.shared.arView
@@ -34,34 +35,31 @@ struct ARSceneActivationButtons: View {
 	var body: some View {
 		VStack {
 			Spacer()
-			Button {
-				ARDataModel.shared.beginARScene()
-				arSceneIsActive = true
-			} label: {
-				Image(systemName: "plus.circle")
-					.font(.largeTitle)
-					.foregroundColor(.gray)
-					.padding([.leading, .trailing], 45)
-			}
-			.clipShape(RoundedRectangle(cornerRadius: 3.0))
-			.buttonStyle(.bordered)
-			.opacity(arSceneIsActive ? 0 : 1)
-			.animation(.easeIn, value: arSceneIsActive)
-			Spacer()
 			HStack {
+				Button {
+					ARDataModel.shared.beginARScene()
+					arSceneIsActive.toggle()
+				} label: {
+					Image(systemName: "plus.circle")
+						.padding([.leading, .trailing], 45)
+				}
+				.clipShape(RoundedRectangle(cornerRadius: 3.0))
+				.buttonStyle(.bordered)
+				.opacity(arSceneIsActive ? 0 : 0.80)
 				Spacer()
 				Button {
 					ARDataModel.shared.resetScene()
-					arSceneIsActive = false
+					arSceneIsActive.toggle()
 				} label: {
 					Image(systemName: "arrow.uturn.backward.circle")
-						.font(.largeTitle)
-						.foregroundColor(.blue)
-						.padding()
+						.padding([.leading, .trailing], 45)
 				}
-				.opacity(arSceneIsActive ? 1 : 0.8)
-				.animation(.easeIn, value: arSceneIsActive)
+				.clipShape(RoundedRectangle(cornerRadius: 3.0))
+				.buttonStyle(.bordered)
+				.opacity(arSceneIsActive ? 1 : 0.0)
 			}
+			.font(.largeTitle)
+			.animation(.easeIn, value: arSceneIsActive)
 		}
 	}
 }
