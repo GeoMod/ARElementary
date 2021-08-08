@@ -173,6 +173,8 @@
 			dependencies = (
 			);
 			name = ARElementary;
+			packageProductDependencies = (
+			);
 			productName = ARElementary;
 			productReference = 181EDA8626AF019900184BB1 /* ARElementary.app */;
 			productType = "com.apple.product-type.application";
@@ -245,6 +247,8 @@
 				Base,
 			);
 			mainGroup = 181EDA7D26AF019900184BB1;
+			packageReferences = (
+			);
 			productRefGroup = 181EDA8726AF019900184BB1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

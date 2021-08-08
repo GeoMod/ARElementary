@@ -30,7 +30,7 @@ struct ContentView: View {
 								.accessibility(hint: Text("Tap to open shapes matching game."))
 						}
 					}
-
+					
 					Spacer()
 				}
 			}

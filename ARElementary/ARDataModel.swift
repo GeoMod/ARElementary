@@ -10,9 +10,11 @@ import Combine
 import RealityKit
 
 class ARDataModel: NSObject, ObservableObject {
-	static var shared = ARDataModel()
-
 	@Published var arView: ARView
+
+	let scene = try! Experience.loadLetters()
+
+	static var shared = ARDataModel()
 
 	// Sample published property allowing action from scene.
 	//	@Published var willReset = false {
@@ -21,11 +23,9 @@ class ARDataModel: NSObject, ObservableObject {
 
 	override init() {
 		arView = ARView()
-
 		super.init()
 		setupCoachingOverlay()
-
-		let scene = try! Experience.loadLetters()
+//		let scene = try! Experience.loadLetters()
 //
 //		// Allow for gesture control in the scene.
 //		guard let A = scene.uppercaseA else { return }
@@ -56,7 +56,7 @@ class ARDataModel: NSObject, ObservableObject {
 ////			arView.installGestures([.rotation, .translation], for: uppercaseD)
 //		}
 //
-		arView.scene.anchors.append(scene)
+//		arView.scene.anchors.append(scene)
 	}
 
 	func setupCoachingOverlay() {
@@ -69,6 +69,14 @@ class ARDataModel: NSObject, ObservableObject {
 		coachingOverlay.goal = .horizontalPlane
 
 		coachingOverlay.session = arView.session
+	}
+
+	func beginARScene() {
+		arView.scene.anchors.append(scene)
+	}
+
+	func resetScene() {
+		arView.scene.anchors.removeAll()
 	}
 	
 	// MARK: Old Reference Code
