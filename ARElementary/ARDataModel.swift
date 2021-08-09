@@ -48,6 +48,7 @@ class ARDataModel: NSObject, ObservableObject {
 
 	func resetScene() {
 		arView.scene.anchors.removeAll()
+
 	}
 	
 	// MARK: Old Reference Code

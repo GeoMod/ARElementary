@@ -9,7 +9,6 @@ import RealityKit
 import SwiftUI
 
 
-
 struct ARScene: View {
 	var body: some View {
 		ZStack {
@@ -18,15 +17,6 @@ struct ARScene: View {
 			ARSceneActivationButtons()
 		}
 	}
-}
-
-// MARK: UIViewRepresentable
-struct ARViewContainer: UIViewRepresentable {
-	func makeUIView(context: Context) -> ARView {
-		return ARDataModel.shared.arView
-	}
-
-	func updateUIView(_ uiView: ARView, context: Context) {}
 }
 
 struct ARSceneActivationButtons: View {
@@ -62,4 +52,13 @@ struct ARSceneActivationButtons: View {
 			.animation(.easeIn, value: arSceneIsActive)
 		}
 	}
+}
+
+// MARK: UIViewRepresentable
+struct ARViewContainer: UIViewRepresentable {
+	func makeUIView(context: Context) -> ARView {
+		return ARDataModel.shared.arView
+	}
+
+	func updateUIView(_ uiView: ARView, context: Context) {}
 }
