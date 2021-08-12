@@ -17,6 +17,7 @@
 		181EDAB426AF020800184BB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDAB326AF020800184BB1 /* AppDelegate.swift */; };
 		181EDAB626AF024300184BB1 /* ARScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDAB526AF024300184BB1 /* ARScene.swift */; };
 		181EDAB826AF027A00184BB1 /* ARDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDAB726AF027A00184BB1 /* ARDataModel.swift */; };
+		18EB0E8026C5653800026FA8 /* Old Reference Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB0E7F26C5653800026FA8 /* Old Reference Code.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		181EDAB526AF024300184BB1 /* ARScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARScene.swift; sourceTree = "<group>"; };
 		181EDAB726AF027A00184BB1 /* ARDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARDataModel.swift; sourceTree = "<group>"; };
 		181EDAB926AF02BF00184BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		18EB0E7F26C5653800026FA8 /* Old Reference Code.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Old Reference Code.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				181EDAB126AF01E000184BB1 /* Experience.rcproject */,
 				181EDA8D26AF019B00184BB1 /* Assets.xcassets */,
 				181EDA8F26AF019B00184BB1 /* Preview Content */,
+				18EB0E7F26C5653800026FA8 /* Old Reference Code.swift */,
 			);
 			path = ARElementary;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			files = (
 				181EDAB626AF024300184BB1 /* ARScene.swift in Sources */,
 				181EDAB426AF020800184BB1 /* AppDelegate.swift in Sources */,
+				18EB0E8026C5653800026FA8 /* Old Reference Code.swift in Sources */,
 				181EDA8C26AF019900184BB1 /* ContentView.swift in Sources */,
 				181EDA8A26AF019900184BB1 /* ARElementaryApp.swift in Sources */,
 				181EDAB826AF027A00184BB1 /* ARDataModel.swift in Sources */,

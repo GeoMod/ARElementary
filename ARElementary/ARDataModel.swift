@@ -9,8 +9,9 @@ import ARKit
 import Combine
 import RealityKit
 
-class ARDataModel: NSObject, ObservableObject {
+class ARDataModel: NSObject, ObservableObject, ARSessionDelegate {
 	@Published var arView: ARView
+	@Published var arrowPositions = [SCNVector3]()
 
 	let lettersScene = try! Experience.loadLetters()
 	let placementArrowScene = try! Experience.loadPlacementArrow()
@@ -25,6 +26,7 @@ class ARDataModel: NSObject, ObservableObject {
 	override init() {
 		arView = ARView()
 		super.init()
+		arView.session.delegate = self
 		setupCoachingOverlay()
 
 		arView.scene.anchors.append(placementArrowScene)
@@ -48,148 +50,67 @@ class ARDataModel: NSObject, ObservableObject {
 
 	func resetScene() {
 		arView.scene.anchors.removeAll()
+	}
+
+	func session(_ session: ARSession, didUpdate frame: ARFrame) {
+		// if game has not started
+		let hitTest = arView.hitTest(arView.center, types: .featurePoint)
+		let result = hitTest.last
+		guard let transform = result?.worldTransform else { return }
+		let thirdColumn = transform.columns.3
+		let position = SCNVector3Make(thirdColumn.x, thirdColumn.y, thirdColumn.z)
+		arrowPositions.append(position)
+
+		// Average the last 10 positions. Note the type is of ArraySlice<SCNVector3>
+		let lastTenPositions = arrowPositions.suffix(10)
+
+		// Get access to the Arrow Entity in the placement arrow scene.
+		let arrow = arView.scene.findEntity(named: "GroupedArrow")
+		arrow?.position = getAveragePosition(from: lastTenPositions)
+		// getAveragePosition(from: lastTenPositions)
+	}
+
+	func renderer(_ renderer: Scene, updateAtTime time: TimeInterval) {
 
 	}
-	
-	// MARK: Old Reference Code
-	/*
-	final class DataModel: ObservableObject {
-		static var shared = DataModel()
 
-		@Published var arView: ARView!
+	// Function to average the positions given.
+	func getAveragePosition(from positions: ArraySlice<SCNVector3>) -> SIMD3<Float> {
+		var averageX = Float()
+		var averageY = Float()
+		var averageZ = Float()
 
-		@Published var willFlip = false {
-			didSet { flipTesla() }
+		for position in positions {
+			averageX += position.x
+			averageY += position.y
+			averageZ += position.z
 		}
 
-		//	@Published var willReset = false {
-		//		didSet { resetScene() }
-		//	}
+		// The number of all positions given.
+		let count = Float(positions.count)
+		let vector = SCNVector3Make(averageX/count, averageY/count, averageZ/count)
 
-
-		//	@Published var scaleValue: Float = 50.0 {
-		//		didSet { scaleTesla() }
+		return SIMD3(vector)
+		//	func getAveragePosition(from positions: ArraySlice<SCNVector3>) -> SCNVector3 {
+		//		var averageX = Float()
+		//		var averageY = Float()
+		//		var averageZ = Float()
+		//
+		//		for position in positions {
+		//			averageX += position.x
+		//			averageY += position.y
+		//			averageZ += position.z
+		//		}
+		//
+		//		// The number of all positions given.
+		//		let count = Float(positions.count)
+		//
+		//		// Send this for the position of the pointer arrow. Averaged from the last 10 given positons for smoother indications.
+		//		return SCNVector3Make(averageX/count, averageY/count, averageZ/count)
 		//	}
 	}
-	 */
-
-	/*
-	 struct ContentView : View {
-
-		 // Dynamically get model name from bundle.
-		 private var appModels: [String] = {
-			 var availableModels: [String] = []
-			 let fileManager = FileManager.default
-			 guard let path = Bundle.main.resourcePath,
-				   let files = try? fileManager.contentsOfDirectory(atPath: path)  else { return [] }
-
-			 for fileName in files where
-				 fileName.hasSuffix("usdz") {
-				 let modelName = fileName.replacingOccurrences(of: ".usdz", with: "")
-				 availableModels.append(modelName)
-			 }
-			 return availableModels
-		 }()
-
-		 @State private var selectionConfirmed = false
-		 @State private var selectedModel: String? = nil
-
-		 @State private var didTap = false
-
-		 var body: some View {
-			 ZStack(alignment: .bottom) {
-				 ARViewContainer(modelAddedToScene: $selectedModel, didTap: $didTap)
-				 VStack {
-	 //				ConfirmCancelButtons(selectionConfirmed: $selectionConfirmed)
-					 ModelPickerView(models: appModels, selectedModel: $selectedModel)
-				 }
-			 }
-			 .edgesIgnoringSafeArea(.all)
-		 }
 
 
-	 }
-
-	 struct ARViewContainer: UIViewRepresentable {
-		 class Coordinator: NSObject, UIGestureRecognizerDelegate {
-			 // TODO: You may not actally need a binding here unless there is a state change when tapping.
-			 // the Raycasting goes in the tapGesture method and I think the work gets done there.
-			 @Binding var didTap: Bool
-
-			 init(didTap: Binding<Bool>) {
-				 self._didTap = didTap
-			 }
-
-			 @objc func tapGesture() { // tapGesture(recognizer: UITapGestureRecognizer, uiView: ARView)
-				 didTap = true
-	 //			let point = recognizer.location(in: uiView)
-	 //
-	 //			guard let rayCastQuery = uiView.makeRaycastQuery(from: point, allowing: .existingPlaneInfinite, alignment: .horizontal) else { return }
-	 //			let result = uiView.raycast(from: point, allowing: .existingPlaneInfinite, alignment: rayCastQuery.targetAlignment)
-	 //
-	 //			if let modelName = modelAddedToScene {
-	 //				let fileName = modelName + ".usdz"
-	 //				let modelEntity = try! ModelEntity.loadModel(named: fileName)
-	 //				let anchor = AnchorEntity(raycastResult: result.first!)
-	 //				anchor.addChild(modelEntity)
-	 //				uiView.scene.anchors.append(anchor)
-	 //			}
-			 }
-		 }
-
-		 @Binding var modelAddedToScene: String?
-		 @Binding var didTap: Bool
-
-		 func makeCoordinator() -> Coordinator {
-			 return Coordinator(didTap: $didTap)
-		 }
-
-		 func makeUIView(context: Context) -> ARView {
-			 let arView = ARView(frame: .zero)
-			 let recognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.tapGesture))
-			 recognizer.delegate = context.coordinator
-
-			 // Load the "Box" scene from the "Experience" Reality File
-			 let boxAnchor = try! Experience.loadBox()
-
-			 //		let configuration = ARWorldTrackingConfiguration()
-			 //		configuration.planeDetection = .horizontal
-			 //		configuration.environmentTexturing = .automatic
-			 //
-			 //		// For devices that support LIDAR
-			 //		if ARWorldTrackingConfiguration.supportsSceneReconstruction(.mesh) {
-			 //			configuration.sceneReconstruction = .mesh
-			 //		}
-
-			 // Add the box anchor to the scene
-			 arView.scene.anchors.append(boxAnchor)
-			 arView.addGestureRecognizer(recognizer)
-
-			 return arView
-		 }
-
-		 func updateUIView(_ uiView: ARView, context: Context) {
-
-		 }
-	 }
-
-	 */
-
-	// sample methods for manipulating the scene.
-//	func flipTesla() {
-//		if let teslaAnchor = arView.scene.anchors[0] as? Tesla.Scene {
-//			teslaAnchor.notifications.flipTesla.post()
-//		}
-//	}
-//
-//	func loadLettersScene() {
-//		DispatchQueue.main.async {
-//			self.arView.scene.anchors.removeAll()
-//
-//			let lettersScene = try! Tesla.loadLetters()
-//			self.arView.scene.anchors.append(lettersScene)
-//		}
-//	}
 
 }
 
