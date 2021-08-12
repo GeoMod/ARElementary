@@ -14,7 +14,7 @@ class ARDataModel: NSObject, ObservableObject, ARSessionDelegate {
 	@Published var arrowPositions = [SCNVector3]()
 
 	let lettersScene = try! Experience.loadLetters()
-	let placementArrowScene = try! Experience.loadPlacementArrow()
+	let placementPointScene = try! Experience.loadPlacementPoint()
 
 	static var shared = ARDataModel()
 
@@ -25,11 +25,12 @@ class ARDataModel: NSObject, ObservableObject, ARSessionDelegate {
 
 	override init() {
 		arView = ARView()
+		
 		super.init()
 		arView.session.delegate = self
 		setupCoachingOverlay()
 
-		arView.scene.anchors.append(placementArrowScene)
+		arView.scene.anchors.append(placementPointScene)
 	}
 
 	func setupCoachingOverlay() {
@@ -64,13 +65,27 @@ class ARDataModel: NSObject, ObservableObject, ARSessionDelegate {
 		// Average the last 10 positions. Note the type is of ArraySlice<SCNVector3>
 		let lastTenPositions = arrowPositions.suffix(10)
 
-		// Get access to the Arrow Entity in the placement arrow scene.
-		let arrow = arView.scene.findEntity(named: "GroupedArrow")
-		arrow?.position = getAveragePosition(from: lastTenPositions)
-		// getAveragePosition(from: lastTenPositions)
-	}
+		#warning("Working here.")
+		// this method is doing a couple different things. try separate out the tasks if you can.
+		// also see about setting a shadow on the position target.
+		// also the target does not disappear after the scene has been set.
+		// code for applying pysics is below.
+		let positionTarget = placementPointScene.positionTarget
+		positionTarget?.position = getAveragePosition(from: lastTenPositions)
 
-	func renderer(_ renderer: Scene, updateAtTime time: TimeInterval) {
+
+		// Get access to the Ball Entity in the placement arrow scene.
+//		var kinematics = PhysicsBodyComponent(shapes: [.generateSphere(radius: 10)], mass: 50)
+//		kinematics.isContinuousCollisionDetectionEnabled = true
+
+//		let motion = PhysicsMotionComponent(linearVelocity: [0.1 ,0, 0], angularVelocity: [3, 3, 3])
+
+//		let ball = placementPointScene.ball as! (Entity & HasPhysics)
+//		ball.components.set(kinematics)
+//		let arrow = arView.scene.findEntity(named: "Arrow")
+
+
+//		ball.position = getAveragePosition(from: lastTenPositions)
 
 	}
 
@@ -91,23 +106,6 @@ class ARDataModel: NSObject, ObservableObject, ARSessionDelegate {
 		let vector = SCNVector3Make(averageX/count, averageY/count, averageZ/count)
 
 		return SIMD3(vector)
-		//	func getAveragePosition(from positions: ArraySlice<SCNVector3>) -> SCNVector3 {
-		//		var averageX = Float()
-		//		var averageY = Float()
-		//		var averageZ = Float()
-		//
-		//		for position in positions {
-		//			averageX += position.x
-		//			averageY += position.y
-		//			averageZ += position.z
-		//		}
-		//
-		//		// The number of all positions given.
-		//		let count = Float(positions.count)
-		//
-		//		// Send this for the position of the pointer arrow. Averaged from the last 10 given positons for smoother indications.
-		//		return SCNVector3Make(averageX/count, averageY/count, averageZ/count)
-		//	}
 	}
 
 
